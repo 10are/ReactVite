@@ -8,7 +8,8 @@ interface Person {
 }
 
 const PeopleList = () => {
-  const { loading, error, data } = useGraphQL();
+  const { loading, error, data, loadMore } = useGraphQL();
+
   const [filter, setFilter] = useState({
     name: '',
     gender: '',
@@ -37,6 +38,20 @@ const PeopleList = () => {
   return (
     <div className="max-w-screen-md mx-auto mt-8">
       <h1 className="text-2xl font-bold mb-4">People</h1>
+      <button
+          onClick={loadMore}
+          disabled={!data.allPeople.pageInfo.hasNextPage}
+          className="bg-blue-500 text-white py-2 px-4 rounded"
+        >
+          Next
+        </button>
+        <button
+          onClick={loadMore}
+          disabled={!data.allPeople.pageInfo.hasNextPage}
+          className="bg-blue-500 text-white py-2 px-4 rounded"
+        >
+          Prev
+        </button>
       <div className="mb-4">
         <label className="mr-2">Name:</label>
         <input type="text" value={filter.name} onChange={(e) => setFilter({ ...filter, name: e.target.value })} />

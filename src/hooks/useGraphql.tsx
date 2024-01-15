@@ -5,13 +5,27 @@ const useGraphQL = () => {
   const { loading, error, data, fetchMore } = useQuery(ALL_PEOPLE_QUERY);
 
   const loadMore = () => {
-    fetchMore({
-      variables: {
-        cursor: data.allPeople.pageInfo.endCursor,
-      },
-    });
-  };
+    if (data.allPeople.pageInfo.hasNextPage) {
+      fetchMore({
+        variables: {
+          cursor: data.allPeople.pageInfo.endCursor,
+        },
+        updateQuery: (prevResult, { fetchMoreResult }) => {
+          const newPeople = fetchMoreResult.allPeople.people;
+          const pageInfo = fetchMoreResult.allPeople.pageInfo;
 
+          return {
+            allPeople: {
+              __typename: prevResult.allPeople.__typename,
+              totalCount: pageInfo.hasNextPage ? prevResult.allPeople.totalCount : newPeople.length,
+              people: newPeople,
+              pageInfo,
+            },
+          };
+        },
+      });
+    }
+  };
 
   return {
     loading,
@@ -22,3 +36,6 @@ const useGraphQL = () => {
 };
 
 export default useGraphQL;
+
+
+
