@@ -1,10 +1,20 @@
 import { useQuery } from '@apollo/client';
 import { ALL_PEOPLE_QUERY } from '../graphql/GraphqlQueries.tsx';
 
-const useGraphQL = () => {
+interface GraphQLResult {
+  loading: boolean;
+  error: any; 
+  data: any; 
+}
+
+interface ExtendedGraphQLResult extends GraphQLResult {
+  loadMore: (direction: 'next' | 'prev') => void;
+}
+
+const useGraphQL = (): ExtendedGraphQLResult => {
   const { loading, error, data, fetchMore } = useQuery(ALL_PEOPLE_QUERY);
 
-  const loadMore = (direction) => {
+  const loadMore = (direction: 'next' | 'prev') => {
     const cursor = direction === 'next' ? data.allPeople.pageInfo.endCursor : data.allPeople.pageInfo.startCursor;
 
     fetchMore({
@@ -36,8 +46,3 @@ const useGraphQL = () => {
 };
 
 export default useGraphQL;
-
-
-
-
-
