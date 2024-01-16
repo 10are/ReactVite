@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import useGraphQL from '../hooks/useGraphQL';
+import  { useState } from 'react';
+import useGraphQL from '../hooks/useGraphql';
 import ExportData from './exportData';
 interface Person {
   name: string;
