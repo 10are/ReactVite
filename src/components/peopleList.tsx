@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useGraphQL from '../hooks/useGraphQL';
-
+import ExportData from './exportData';
 interface Person {
   name: string;
   gender: string;
@@ -36,7 +36,6 @@ const PeopleList = () => {
   return (
     <div className="max-w-screen-md mx-auto mt-8  text-white p-4 rounded">
       <h1 className="text-2xl font-bold mb-4 text-yellow-300 text-center">MAY THE FORCE BE WITH YOU</h1>
-  
       <div className="flex flex-col mb-4 sm:flex-row sm:justify-center">
         <div className="flex items-center mb-4 mr-4">
           <label className="mr-2 ">Name:</label>
@@ -44,7 +43,7 @@ const PeopleList = () => {
             type="text"
             value={filter.name}
             onChange={(e) => setFilter({ ...filter, name: e.target.value })}
-            className="bg-black bg-gray-700 border border-gray-600 p-2 rounded-md text-white w-full sm:w-24"
+            className="bg-black border border-gray-600 hover:border-color-white p-2 rounded-md text-white w-full sm:w-24"
           />
         </div>
   
@@ -54,7 +53,7 @@ const PeopleList = () => {
             type="text"
             value={filter.gender}
             onChange={(e) => setFilter({ ...filter, gender: e.target.value })}
-            className="bg-black bg-gray-700 border border-gray-600 p-2 rounded-md text-white w-full sm:w-24"
+            className="bg-black border border-gray-600 hover:border-color-white p-2 rounded-md text-white w-full sm:w-24"
           />
         </div>
   
@@ -64,11 +63,10 @@ const PeopleList = () => {
             type="text"
             value={filter.eyeColor}
             onChange={(e) => setFilter({ ...filter, eyeColor: e.target.value })}
-            className="bg-black bg-gray-700 border border-gray-600 p-2 rounded-md text-white w-full sm:w-24"
+            className="bg-black border border-gray-600 hover:border-color-white p-2 rounded-md text-white w-full sm:w-24"
           />
         </div>
       </div>
-  
       <table className="min-w-full bg-gray-700 border border-gray-600 mb-4">
         <thead>
           <tr className="bg-gray-600">
@@ -87,12 +85,12 @@ const PeopleList = () => {
           ))}
         </tbody>
       </table>
-  
       <div className="flex justify-center space-x-4">
+      
         <button
           onClick={() => loadMore('next')}
           disabled={!data.allPeople.pageInfo.hasNextPage}
-          className="bg-black bg-gray-700 border border-gray-600 hover:border-white text-white py-2 px-4 rounded"
+          className="bbg-black border border-gray-600 hover:border-color-white hover:border-white text-white py-2 px-4 rounded"
         >
           Next
         </button>
@@ -100,11 +98,12 @@ const PeopleList = () => {
         <button
           onClick={() => loadMore('prev')}
           disabled={!data.allPeople.pageInfo.endCursor}
-          className="bg-black bg-gray-700 border border-gray-600 hover:border-white text-white py-2 px-4 rounded"
+          className="bg-black border border-gray-600 hover:border-color-white hover:border-white text-white py-2 px-4 rounded"
         >
           Prev
         </button>
       </div>
+      <ExportData />
     </div>
   );  
 };
