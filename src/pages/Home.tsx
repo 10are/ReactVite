@@ -1,10 +1,12 @@
-import PeopleList from '../components/peopleList'
+// import PeopleList from '../components/peopleList'
+import CharacterList from '../components/characterList'
 
 
 const Home = () => {
   return (
     <> 
-        <PeopleList />
+        {/* <PeopleList /> */}
+        <CharacterList /> 
     </>
 
   )

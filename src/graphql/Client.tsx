@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ALL_PEOPLE_QUERY } from './GraphqlQueries.tsx';
 
 
-const client = new ApolloClient({
+ const client = new ApolloClient({
   uri: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
   cache: new InMemoryCache(),
 });

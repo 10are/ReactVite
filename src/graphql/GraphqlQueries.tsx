@@ -1,33 +1,32 @@
-
 import { gql } from '@apollo/client';
 
+// fist 15'i burada yönetme
+// tek query'de hallet 
+// debounce kullan
+// usehooks.com (debounce)
+// prettier ekleme
+// index.ccss stylede tut
+// env url kullan
+// console.lgo bırkam
+// zustand
+
+
 export const ALL_PEOPLE_QUERY = gql`
-  query AllPeople($cursor: String) {
-    allPeople(first: 15, after: $cursor) {
+  query AllPeople($first: Int, $after: String) {
+    allPeople(first: $first, after: $after) {
       totalCount
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
       people {
         name
         gender
         eyeColor
       }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
     }
   }
-`;
+  `;
 
-export const EXCEL_QUERY = gql`
-query AllPeople {
-  allPeople {
-  totalCount
-  people
-  {
-  name
-  gender
-  eyeColor
-  }
-  }
- }
- `;
+
+
