@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-**Live: [Netlify](https://react-vite-w2pe.vercel.app/)**
+**Live: [REACT-VITE](https://react-vite-w2pe.vercel.app/)**
 
 ## Features
 - React application scaffolded with Vite.
