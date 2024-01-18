@@ -11,7 +11,7 @@ export const useCharacterListQuery = (pageSize) => {
     });
   };
   
-  export const fetchNextPage = (fetchMore, pageInfo, pageSize, setCurrentPage) => {
+  export const fetchNextPage = (fetchMore, pageInfo, pageSize) => {
     fetchMore({
       variables: {
         first: pageSize,
@@ -27,11 +27,9 @@ export const useCharacterListQuery = (pageSize) => {
         };
       },
     });
-    setCurrentPage((prev) => prev + 1);
   };
   
-  export const fetchPrevPage = (fetchMore, pageInfo, pageSize, currentPage, setCurrentPage) => {
-    if (currentPage > 1) {
+  export const fetchPrevPage = (fetchMore, pageInfo, pageSize ) => { {
       fetchMore({
         variables: {
           last: pageSize,
@@ -47,7 +45,6 @@ export const useCharacterListQuery = (pageSize) => {
           };
         },
       });
-      setCurrentPage((prev) => prev - 1);
     }
   };
   

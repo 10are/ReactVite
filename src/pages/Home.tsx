@@ -1,11 +1,9 @@
-// import PeopleList from '../components/peopleList'
-import CharacterList from '../components/characterList'
+import CharacterList from './features/CharacterListPage';
 
 
 const Home = () => {
   return (
     <> 
-        {/* <PeopleList /> */}
         <CharacterList /> 
     </>
 
