@@ -5,7 +5,7 @@ const PageSize = ({ pageSize, onPageSizeChange }: { pageSize: number, onPageSize
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center pt-5">
       <label className="text-white mr-2">Page Size:</label>
       <select
         value={pageSize}
