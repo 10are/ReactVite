@@ -1,9 +1,8 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ALL_PEOPLE_QUERY } from './GraphqlQueries.tsx';
 
-
- const client = new ApolloClient({
-  uri: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
+const client = new ApolloClient({
+  uri: import.meta.env.VITE_REACT_APP_API_URL as string,
   cache: new InMemoryCache(),
 });
 
